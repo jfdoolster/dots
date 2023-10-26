@@ -23,7 +23,3 @@ HISTCONTROL=ignoreboth
 #HISTSIZE= HISTFILESIZE= # Infinite history.
 HISTSIZE=1000
 HISTFILESIZE=2000
-
-if [ -f ~/.bash_ssh ]; then
-    . ~/.bash_ssh
-fi
