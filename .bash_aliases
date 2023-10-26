@@ -1,6 +1,6 @@
 # $HOME/.bashrc_aliases
 
-PS1="\[\e[96;1m\]\u@\h"
+PS1="\[\e[97;1m\]\u@\h"
 if [ $EUID == 0 ]; then
 	PS1="\[\e[91;1m\]\u@\h"
 fi
@@ -15,7 +15,7 @@ alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 
 shopt -s histappend # dont overwrite historyfile
-shopt -s checkwinsize # dont overwrite historyfile
+shopt -s checkwinsize # update col # after each command
 
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
