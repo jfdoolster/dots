@@ -1,13 +1,18 @@
 # $HOME/.bashrc_aliases
 
+PS1="\[\e[97;1m\]\u@\h"
 if [ $EUID == 0 ]; then
-	PS1='\[\e[91;1m\]\u@\h \[\e[0;2;3m\]\W \[\e[23;1m\]\$ \[\e[0m\]'
-else
-	PS1='\[\e[1m\]\u@\h \[\e[0;2;3m\]\W \[\e[23;1m\]\$ \[\e[0m\]'
+	PS1="\[\e[91;1m\]\u@\h"
 fi
 
-alias ls='ls --color=auto'
-alias grep='grep --color=auto'
+if [ -n "$SSH_CLIENT" ]; then
+	PS1="\[\e[93;1;3m\]ssh $PS1"
+fi
+
+PS1="$PS1 \[\e[0;2;3m\]\W \[\e[23;1m\]\$ \[\e[0m\]"
+
+alias ls="ls --color=auto"
+alias grep="grep --color=auto"
 
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
