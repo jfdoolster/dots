@@ -2,14 +2,14 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f $HOME/.bash_aliases ]; then
+    . $HOME/.bash_aliases
 fi
 
-if [ -f ~/.bash_ssh ]; then
-    . ~/.bash_ssh
+if [ -f $HOME/.bash_ssh ]; then
+    . $HOME/.bash_ssh
 fi
 
-if [ -f ~/anaconda3/bin/conda ]; then
-    PATH=$HOME/anaconda3/bin:$PATH
-fi
+#if [ -f /root/anaconda3/bin/conda ]; then
+#    PATH=/root/anaconda3/bin:$PATH
+#fi
