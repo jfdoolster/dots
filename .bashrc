@@ -9,3 +9,7 @@ fi
 if [ -f ~/.bash_ssh ]; then
     . ~/.bash_ssh
 fi
+
+if [ -f ~/anaconda3/bin/conda ]; then
+    PATH=$HOME/anaconda3/bin:$PATH
+fi
