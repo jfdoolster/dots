@@ -11,7 +11,8 @@ set fileformat=unix
 syntax on
 set encoding=utf-8
 set number
+
 highlight LineNr term=italic cterm=italic gui=italic
-highlight Normal guifg=white guibg=black
-highlight Normal ctermfg=white ctermbg=black
+highlight LineNr ctermfg=white ctermbg=black guifg=white guibg=black
+highlight Normal ctermfg=white ctermbg=black guifg=white guibg=black
 
