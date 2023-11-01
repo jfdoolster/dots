@@ -2,10 +2,11 @@
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 
-cp -r $SCRIPT_DIR/.vim $HOME
 cp $SCRIPT_DIR/.bash_profile $HOME
 cp $SCRIPT_DIR/.bash_aliases $HOME
 cp $SCRIPT_DIR/.bash_logout $HOME
 
-#cp $SCRIPT_DIR/.bash_ssh $HOME
-#cp $SCRIPT_DIR/.bashrc $HOME
+cp -r $SCRIPT_DIR/.vim $HOME
+if [[ "$OSTYPE" == "msys"* ]]; then
+    cp -r $SCRIPT_DIR/.vim $HOME/vimfiles
+fi
