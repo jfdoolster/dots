@@ -24,3 +24,6 @@ HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
 
+if [ -d $HOME/dots/srcs ]; then
+    PATH=$PATH:$HOME/dots/srcs 
+fi
