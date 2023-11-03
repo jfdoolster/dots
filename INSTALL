@@ -10,3 +10,5 @@ cp -r $SCRIPT_DIR/.vim $HOME
 if [[ "$OSTYPE" == "msys"* ]]; then
     cp -r $SCRIPT_DIR/.vim $HOME/vimfiles
 fi
+
+exec $(source ~/.bashrc)
