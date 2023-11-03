@@ -1,14 +1,30 @@
 #!/bin/bash
 
-SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+DOT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+OUT_DIR=$HOME
 
-cp $SCRIPT_DIR/.bash_profile $HOME
-cp $SCRIPT_DIR/.bash_aliases $HOME
-cp $SCRIPT_DIR/.bash_logout $HOME
+show_copy() {
+    cp -rf $DOT_DIR/$1 $OUT_DIR
+    echo -ne "$DOT_DIR/$1  =>  $OUT_DIR/$1\n"
+}
 
-cp -r $SCRIPT_DIR/.vim $HOME
-if [[ "$OSTYPE" == "msys"* ]]; then
-    cp -r $SCRIPT_DIR/.vim $HOME/vimfiles
+
+if [[ -f $HOME/.bashrc ]]; then
+    read -p "Overwrite ${OUT_DIR}/.bashrc? (yes/[no]) " yn
+
+    case $yn in
+        yes ) show_copy .bashrc;;
+        * ) echo -en "${OUT_DIR}/.bashrc not modified\n";;
+    esac
+
+else
+    show_copy .bashrc
 fi
+
+
+show_copy .bash_profile
+show_copy .bash_aliases
+show_copy .bash_logout
+show_copy .vim
 
 exec $(source ~/.bashrc)

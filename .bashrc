@@ -16,8 +16,10 @@ if [[ "${OSTYPE}" == 'cygwin' ]]; then
     export CONDA_BASEDIR=/cygwin/c/ProgramData/anaconda3
     export SHELLOPTS
     set -o igncr
-
-    #alias python="$CONDA_BASE_DIR/python"
+    
+    alias ifconfig=ipconfig
+    
+    export PATH=$CONDA_BASEDIR/python:$PATH
 #
 #    alias cyg-conda=${CONDA_BASE_DIR}/Scripts/conda.exe
 #    PATH=$PATH:$CONDA_PREFIX
