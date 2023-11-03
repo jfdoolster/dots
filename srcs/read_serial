@@ -1,4 +1,10 @@
 #!/bin/bash
+
+if [ "$#" -ne 2 ]; then
+    echo -ne "  Usage: read_serial <Device> <Baud>\n"
+    exit 0
+fi
+
 NAME=$1
 BAUD=$2
 
