@@ -2,20 +2,18 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+
 if [ -f $HOME/.bash_aliases ]; then
     . $HOME/.bash_aliases
 fi
 
-if [[ "${OSTYPE}" == 'cygwin' ]]; then
-    export CONDA_BASEDIR=/cygdrive/c/Users/jdooley/anaconda3
-    export SHELLOPTS
-    set -o igncr
-    
-    alias ifconfig=ipconfig
-    
-    export PATH=$CONDA_BASEDIR/python:$PATH
+if [ -f $HOME/.bash_ssh ]; then
+    . $HOME/.bash_ssh
 fi
 
-#if [ -f $HOME/.bash_ssh ]; then
-#    . $HOME/.bash_ssh
-#fi
+if [ -d $HOME/dots/srcs ]; then
+    PATH=$PATH:$HOME/dots/srcs
+fi
+
+export PROMPT_COMMAND="echo -en \"\033]0;$PROMPT_PRE$USER@$(uname -n)\a\""
+export PS1="\[\e[93;1;2;3m\]$PROMPT_PRE\[\e[0m\]$PS1"
