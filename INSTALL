@@ -24,7 +24,8 @@ fi
 
 show_copy .bash_profile
 show_copy .bash_aliases
+show_copy .bash_ssh
 show_copy .bash_logout
 show_copy .vim
 
-exec $(source ~/.bashrc)
+echo -ne "\n\nplease run 'source ~/.bashrc'\n\n"
