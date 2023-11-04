@@ -13,10 +13,6 @@ HISTCONTROL=ignoreboth
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-if [ -d $HOME/dots/srcs ]; then
-    PATH=$PATH:$HOME/dots/srcs
-fi
-
 if [[ -z "${USER}" ]]; then
     USER=$USERNAME
 fi
@@ -27,8 +23,6 @@ if [[ "${OSTYPE}" == 'cygwin' ]]; then
     set -o igncr
 
     alias ifconfig=ipconfig
-
-    export PATH=$CONDA_BASEDIR/bin:$PATH
 fi
 
 
