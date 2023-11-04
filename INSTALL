@@ -28,4 +28,4 @@ show_copy .bash_ssh
 show_copy .bash_logout
 show_copy .vim
 
-echo -ne "\n\nplease run 'source ~/.bashrc'\n\n"
+echo -ne "\nplease run 'source ~/.bashrc'\n\n"
