@@ -13,4 +13,4 @@ echo -ne "Baud:   $2\n"
 echo -ne "(Read Only)\n\n"
 
 stty -F $NAME ispeed $BAUD
-cat < $NAME
+cat $NAME
