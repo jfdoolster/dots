@@ -30,6 +30,7 @@ if [[ "${OSTYPE}" == 'cygwin' ]]; then
     set -o igncr
 
     alias ifconfig=ipconfig
+    alias tlmgr=tlmgr.bat
 fi
 
 
