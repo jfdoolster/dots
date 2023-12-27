@@ -31,8 +31,6 @@ if [[ "${OSTYPE}" == 'cygwin' ]]; then
 
     alias ifconfig=ipconfig
     alias tlmgr=tlmgr.bat
-
-    /usr/sbin/cron
 fi
 
 
