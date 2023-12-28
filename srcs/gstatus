@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+BASEDIR=$1
+
+exec 3>&2
+exec 2> /dev/null
+GITDIR=$(git -C $BASEDIR rev-parse --git-dir)
+exec 2>&3
+
+if [ "$GITDIR" != "" ] && [ -d $GITDIR ]; then
+    git -C $(dirname $GITDIR) submodule foreach 'git status -s'
+    git -C $(dirname $GITDIR) status
+else
+    echo "$BASEDIR is not part of a git directory"
+fi

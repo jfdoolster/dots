@@ -11,6 +11,10 @@ if [ -f $HOME/.bash_ssh ]; then
     . $HOME/.bash_ssh
 fi
 
+if [ -f $HOME/.bash_conda ]; then
+    . $HOME/.bash_conda
+fi
+
 if [ -d $HOME/dots/srcs ]; then
     PATH=$PATH:$HOME/dots/srcs
 fi

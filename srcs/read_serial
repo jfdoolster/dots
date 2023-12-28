@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/bash
 
 if [ "$#" -ne 2 ]; then
     echo -ne "  Usage: read_serial <Device> <Baud>\n"
