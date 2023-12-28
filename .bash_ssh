@@ -2,11 +2,6 @@
 SSH_DIR=~/.ssh
 KEY_DIR=~/.keychain
 
-if [[ "${OSTYPE}" == 'cygwin' ]]; then
-    SSH_DIR=/cygdrive/c/Users/jdooley/.ssh
-fi
-if [[ "${OSTYPE}" != 'cygwin' ]]; then
-    eval $(keychain --eval --quiet $SSH_DIR/id_ecdsa)
-    . $KEY_DIR/$HOSTNAME-sh
-fi
+eval $(keychain --eval --quiet $SSH_DIR/id_ecdsa)
+. $KEY_DIR/$HOSTNAME-sh
 
