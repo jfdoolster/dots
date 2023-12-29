@@ -1,7 +1,12 @@
-
 SSH_DIR=~/.ssh
 KEY_DIR=~/.keychain
+if [[ "${OSTYPE}" == 'linux' ]]; then
+    eval $(keychain --eval --quiet $SSH_DIR/id_ecdsa)
+    . $KEY_DIR/$HOSTNAME-sh
+elif [[ "${OSTYPE}" == 'cygwin' ]]; then
+    SSH_DIR=/cygdrive/c/Users/jdooley/.ssh
+    KEY_DIR=~/.keychain
+    # todo: figure out fingureprint issue!
+fi
 
-eval $(keychain --eval --quiet $SSH_DIR/id_ecdsa)
-. $KEY_DIR/$HOSTNAME-sh
 
