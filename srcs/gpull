@@ -8,7 +8,7 @@ exec 2>&3
 
 if [ "$GITDIR" != "" ] && [ -d $GITDIR ]; then
     git -C $(dirname $GITDIR) submodule foreach 'git pull origin main'
-    git -C $(dirname $GITDIR) push origin main
+    git -C $(dirname $GITDIR) pull origin main
 else
     echo "$BASEDIR is not part of a git directory"
 fi
