@@ -1,7 +1,7 @@
 if [[ "$USER" == "jdooley" ]]; then
     SSH_DIR=~/.ssh
     KEY_DIR=~/.keychain
-    if [[ "${OSTYPE}" == 'linux' ]]; then
+    if [[ "${OSTYPE}" == 'linux' ]] || [[ "${OSTYPE}" == 'linux-gnu' ]] ; then
         eval $(keychain --eval --quiet $SSH_DIR/id_ecdsa)
         . $KEY_DIR/$HOSTNAME-sh
     elif [[ "${OSTYPE}" == 'cygwin' ]]; then
