@@ -1,35 +1,45 @@
 #!/usr/bin/bash
 BASEDIR=$(pwd)
 
-exec 3>&2
-exec 2> /dev/null
-GITDIR=$(git -C $BASEDIR rev-parse --git-dir)
-exec 2>&3
 
-if [ "$GITDIR" == "" ] && [ ! -d $GITDIR ]; then
+ISGIT=$(git -C $BASEDIR rev-parse --is-inside-work-tree 2> /dev/null)
+
+if [ "$ISGIT" == "" ]; then
     echo "$BASEDIR is not part of a git directory"
     exit 1
 fi
+GITBASE=$BASEDIR
+
+GITTOP=$(git -C $BASEDIR rev-parse --path-format=absolute --show-superproject-working-tree)
+if [ "$GITTOP" != "" ]; then
+    GITBASE=$GITTOP
+fi
+
+#echo "BASEDIR=$BASEDIR"
+#echo "ISGIT=$ISGIT"
+#echo "GITTOP=$GITTOP"
+#echo "GITBASE=$GITBASE"
 
 gfetch() {
-    git -C $(dirname $GITDIR) submodule foreach 'git fetch'
-    git -C $(dirname $GITDIR) fetch
+    git -C $GITBASE submodule foreach 'git fetch'
+    git -C $GITBASE fetch
 }
 gstatus() {
-    git -C $(dirname $GITDIR) submodule foreach 'git status -s'
-    git -C $(dirname $GITDIR) status
+    git -C $GITBASE submodule foreach 'git status -s'
+    git -C $GITBASE status
 }
 gpull() {
-    git -C $(dirname $GITDIR) submodule foreach 'git pull origin main'
-    git -C $(dirname $GITDIR) pull origin main
+    git -C $GITBASE submodule foreach 'git pull origin main'
+    git -C $GITBASE pull origin main
 }
 gcommit() {
-    git -C $(dirname $GITDIR) submodule foreach "git add . && git commit -m '$1'"
-    git -C $(dirname $GITDIR) add . && git -C $(dirname $GITDIR) commit -m "$1"
+    COMMIT_MESSAGE="$1"
+    git -C $GITBASE submodule foreach "git add .; git commit -m'${COMMIT_MESSAGE}' || :"
+    git -C $GITBASE add .; git -C $GITBASE commit -m"${COMMIT_MESSAGE}" || :
 }
 gpush() {
-    git -C $(dirname $GITDIR) submodule foreach 'git push origin main'
-    git -C $(dirname $GITDIR) push origin main
+    git -C $GITBASE submodule foreach 'git push origin main'
+    git -C $GITBASE push origin main
 }
 
 if [ $# -ne 0 ] && [ "$1" == "fetch" ]; then
@@ -37,12 +47,11 @@ if [ $# -ne 0 ] && [ "$1" == "fetch" ]; then
 elif [ $# -ne 0 ] && [ "$1" == "pull" ]; then
     gpull
 elif [ $# -ne 0 ] && [ "$1" == "commit" ]; then
-    COMMITSTR="autocommit: $USER@$HOSTNAME ($(date +'%Y/%d/%m %T'))"
+    COMMITSTR="autocommit ($(date +'%Y/%d/%m %T'))"
     if [ "$2" != "" ]; then
         COMMITSTR="$2"
     fi
-    #echo $COMMITSTR
-    gcommit $COMMITSTR
+    gcommit ${COMMITSTR}
 elif [ $# -ne 0 ] && [ "$1" == "push" ]; then
     gpush
 else
