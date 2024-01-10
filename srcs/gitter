@@ -33,7 +33,8 @@ gpull() {
     git -C $GITBASE pull origin main
 }
 gcommit() {
-    COMMIT_MESSAGE="$1"
+    COMMIT_MESSAGE=$1
+    #echo $COMMIT_MESSAGE
     git -C $GITBASE submodule foreach "git add .; git commit -m'${COMMIT_MESSAGE}' || :"
     git -C $GITBASE add .; git -C $GITBASE commit -m"${COMMIT_MESSAGE}" || :
 }
@@ -47,11 +48,11 @@ if [ $# -ne 0 ] && [ "$1" == "fetch" ]; then
 elif [ $# -ne 0 ] && [ "$1" == "pull" ]; then
     gpull
 elif [ $# -ne 0 ] && [ "$1" == "commit" ]; then
-    COMMITSTR="autocommit ($(date +'%Y/%d/%m %T'))"
+    COMMITSTR="autocommit: $USER@$HOSTNAME ($(date +'%Y/%d/%m %T'))"
     if [ "$2" != "" ]; then
         COMMITSTR="$2"
     fi
-    gcommit ${COMMITSTR}
+    gcommit "$COMMITSTR"
 elif [ $# -ne 0 ] && [ "$1" == "push" ]; then
     gpush
 else
