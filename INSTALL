@@ -21,7 +21,6 @@ else
     show_copy .bashrc
 fi
 
-
 show_copy .bash_profile
 show_copy .bash_aliases
 show_copy .bash_ssh

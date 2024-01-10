@@ -1,0 +1,24 @@
+#!/usr/bin/bash
+BASEDIR=$(pwd)
+
+exec 3>&2
+exec 2> /dev/null
+GITDIR=$(git -C $BASEDIR rev-parse --git-dir)
+exec 2>&3
+
+if [ "$GITDIR" == "" ] && [ ! -d $GITDIR ]; then
+    echo "$BASEDIR is not part of a git directory"
+    exit 1
+fi
+
+if [ $# -ne 0 ] && [ "$1" == "pull" ]; then
+    git -C $(dirname $GITDIR) submodule foreach 'git pull origin main'
+    git -C $(dirname $GITDIR) pull origin main
+elif [ $# -ne 0 ] && [ "$1" == "push" ]; then
+    git -C $(dirname $GITDIR) submodule foreach 'git push origin main'
+    git -C $(dirname $GITDIR) push origin main
+else
+    git -C $(dirname $GITDIR) submodule foreach 'git status -s'
+    git -C $(dirname $GITDIR) status
+fi
+
