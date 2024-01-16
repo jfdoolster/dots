@@ -47,7 +47,7 @@ if [ $# -ne 0 ] && [ "$1" == "fetch" ]; then
 elif [ $# -ne 0 ] && [ "$1" == "pull" ]; then
     gpull
 elif [ $# -ne 0 ] && [ "$1" == "commit" ]; then
-    COMMITSTR="autocommit: $USER@$HOSTNAME ($(date +'%Y/%m/%d %T'))"
+    COMMITSTR="autocommit: $USER@$HOSTNAME ($(date +'%y/%m/%d %T'))"
     if [ "$2" != "" ]; then
         COMMITSTR="$2"
     fi
