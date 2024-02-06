@@ -28,4 +28,9 @@ show_copy .bash_conda
 show_copy .bash_logout
 show_copy .vim
 
+if [[ "${OSTYPE}" == 'cygwin' ]]; then
+    cp -rf $DOT_DIR/.vim /cygdrive/c/Users/jdooley/.vim
+    echo -ne "$DOT_DIR/.vim => /cygdrive/c/Users/jdooley/.vim\n"
+fi
+
 echo -ne "\nplease run 'source ~/.bashrc'\n\n"
