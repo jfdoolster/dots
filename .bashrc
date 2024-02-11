@@ -11,6 +11,10 @@ if [ -f $HOME/.bash_ssh ]; then
     . $HOME/.bash_ssh
 fi
 
+if [ -f $HOME/.bash_texlive ]; then
+    . $HOME/.bash_texlive
+fi
+
 if [ -f $HOME/.bash_conda ]; then
     . $HOME/.bash_conda
 fi
