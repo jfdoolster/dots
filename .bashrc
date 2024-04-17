@@ -24,7 +24,7 @@ if [ -d $HOME/dots/srcs ]; then
 fi
 
 set-window-title() {
-  echo -en "\033]0;$PROMPT_PRE$(pwd | sed -e "s;^$HOME;~;")\a"
+  echo -en "\033]0;$PROMPT_PRE$USER@$(uname -n): $(basename `pwd`)\a"
 }
 if [[ "$PROMPT_COMMAND" ]]; then
   export PROMPT_COMMAND="$PROMPT_COMMAND;set-window-title"
