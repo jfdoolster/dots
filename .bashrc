@@ -19,6 +19,10 @@ if [ -f $HOME/.bash_conda ]; then
     . $HOME/.bash_conda
 fi
 
+if [ -f $HOME/.bash_qemu ]; then
+    . $HOME/.bash_qemu
+fi
+
 if [ -d $HOME/dots/srcs ]; then
     PATH=$PATH:$HOME/dots/srcs
 fi

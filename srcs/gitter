@@ -1,0 +1,25 @@
+#!/usr/bin/bash
+BASEDIR=$(pwd)
+
+ISGIT=$(git -C $BASEDIR rev-parse --is-inside-work-tree 2> /dev/null)
+
+if [ "$ISGIT" == "" ]; then
+    echo "$BASEDIR is not part of a git directory"
+    exit 1
+fi
+GITBASE=$BASEDIR
+COMMITSTR=""
+
+if [ "$1" == "" ] || [ "$1" == "status" ]; then
+    git -C $GITBASE submodule foreach \'git status -s\'
+    git -C $GITBASE status
+    exit 0
+elif [ "$1" == "autocommit" ]; then
+    COMMITSTR="autocommit: $USER@$HOSTNAME ($(date +'%y/%m/%d %T'))"
+    git -C $GITBASE submodule foreach \'git commit -am\"$COMMITSTR\"\'
+    git -C $GITBASE commit -am\"$COMMITSTR\"
+    exit 0
+fi
+
+git -C $GITBASE submodule foreach \'git $@\'
+git -C $GITBASE $@
