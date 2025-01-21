@@ -18,17 +18,15 @@ alias grep="grep --color=auto"
 
 export PATH=$PATH:$HOME/.local/bin
 
+HISTCONTROL=ignoreboth
+
+shopt -s histappend
+
+HISTSIZE=1000
+HISTFILESIZE=2000
+
 shopt -s checkwinsize # update col # after each command
 
 if [ -n "$SSH_CLIENT" ]; then
 	PROMPT_PRE="(ssh) "
-fi
-
-if [[ "${OSTYPE}" == 'cygwin' ]]; then
-    export CONDA_BASEDIR=/cygdrive/c/Users/jdooley/anaconda3
-    export SHELLOPTS
-    set -o igncr
-
-    alias ifconfig=ipconfig
-    alias tlmgr=tlmgr.bat
 fi
