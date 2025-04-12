@@ -16,15 +16,6 @@ PS1="$PS1 \[\e[0;2;3m\]\W \[\e[23;1m\]$PSYMB \[\e[0m\]"
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 
-export PATH=$PATH:$HOME/.local/bin
-
-HISTCONTROL=ignoreboth
-
-shopt -s histappend
-
-HISTSIZE=1000
-HISTFILESIZE=2000
-
 shopt -s checkwinsize # update col # after each command
 
 if [ -n "$SSH_CLIENT" ]; then

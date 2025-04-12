@@ -1,3 +1,0 @@
-if [[ "${OSTYPE}" == 'linux' ]] || [[ "${OSTYPE}" == 'linux-gnu' ]] ; then
-    export PATH="/usr/local/texlive/2024/bin/x86_64-linux:$PATH"
-fi
