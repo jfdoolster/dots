@@ -2,7 +2,7 @@
 
 ret=1
 if [ -z "$1" ]; then
-    echo "No argument supplied"
+    echo -ne "  Usage: user_prompt <YES_NO_PROMPT>\n"
     exit 1
 fi
 

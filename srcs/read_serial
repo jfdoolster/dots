@@ -2,7 +2,7 @@
 
 if [ "$#" -ne 2 ]; then
     echo -ne "  Usage: read_serial <Device> <Baud>\n"
-    exit 0
+    exit 1
 fi
 
 NAME=$1
