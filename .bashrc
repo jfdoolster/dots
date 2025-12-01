@@ -6,6 +6,10 @@ if [ -f $HOME/.bash_aliases ]; then
     . $HOME/.bash_aliases
 fi
 
+if [ -f $HOME/.gcloudrc ]; then
+    . $HOME/.gcloudrc
+fi
+
 if [ -d $HOME/dots/srcs ]; then
     PATH=$PATH:$HOME/dots/srcs
 fi
