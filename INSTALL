@@ -16,7 +16,7 @@ if [[ -f $HOME/.bashrc ]]; then
     #    * ) echo -en "${OUT_DIR}/.bashrc not modified\n";;
     #esac
 
-    $DOT_DIR/srcs/user_prompt "Overwrite ${OUT_DIR}/.bashrc?"
+    $DOT_DIR/srcs/continue_prompt "Overwrite ${OUT_DIR}/.bashrc?"
     if [ $? -eq 0 ]; then
         show_copy .bashrc
     else
