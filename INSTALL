@@ -9,12 +9,19 @@ show_copy() {
 }
 
 if [[ -f $HOME/.bashrc ]]; then
-    read -p "Overwrite ${OUT_DIR}/.bashrc? (yes/[no]) " yn
+    #read -p "Overwrite ${OUT_DIR}/.bashrc? (yes/[no]) " yn
 
-    case $yn in
-        yes ) show_copy .bashrc;;
-        * ) echo -en "${OUT_DIR}/.bashrc not modified\n";;
-    esac
+    #case $yn in
+    #    yes ) show_copy .bashrc;;
+    #    * ) echo -en "${OUT_DIR}/.bashrc not modified\n";;
+    #esac
+
+    $DOT_DIR/srcs/user_prompt "Overwrite ${OUT_DIR}/.bashrc?"
+    if [ $? -eq 0 ]; then
+        show_copy .bashrc
+    else
+        echo -en "${OUT_DIR}/.bashrc not modified\n"
+    fi
 
 else
     show_copy .bashrc

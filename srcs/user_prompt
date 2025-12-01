@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+ret=1
+if [ -z "$1" ]; then
+    echo "No argument supplied"
+    exit 1
+fi
+
+read -p "$1 (y/[n]) " yn
+
+case $yn in
+    y ) ret=0;;
+    * ) ret=1;;
+esac
+
+exit $ret
