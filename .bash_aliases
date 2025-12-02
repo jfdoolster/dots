@@ -8,7 +8,7 @@ fi
 #PS1="\[\e[97;1m\]\u@\h"
 PS1="\[$WHITE\]\[$BOLD\]\u@\h\[$COL_RESET\]"
 PSYMB="\[$WHITE\]\[$BOLD\]\$\[$COL_RESET\]"
-PDIR="\[$ITALIC\]\[$DIM\]\W\[$COL_RESET\]"
+PDIR="\[$DIM\]\[$ITALIC\]\W\[$COL_RESET\]"
 if [ $EUID == 0 ]; then
     #PS1="\[\e[91;1m\]\u@\h"
     #PS1="\033[38;5;1;1m\u@\h"
@@ -28,5 +28,5 @@ alias grep="grep --color=auto"
 shopt -s checkwinsize # update col # after each command
 
 if [ -n "$SSH_CLIENT" ]; then
-	PROMPT_PRE="(ssh) "
+	PROMPT_PRE="\[$WHITE\]\[$BOLD\]\[$DIM\]\[$ITALIC\](ssh) \[$COL_RESET\]"
 fi
