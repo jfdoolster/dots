@@ -28,5 +28,6 @@ alias grep="grep --color=auto"
 shopt -s checkwinsize # update col # after each command
 
 if [ -n "$SSH_CLIENT" ]; then
-	PROMPT_PRE="\[$WHITE\]\[$BOLD\]\[$DIM\]\[$ITALIC\](ssh) \[$COL_RESET\]"
+	#PROMPT_PRE="\[$WHITE\]\[$BOLD\]\[$DIM\]\[$ITALIC\](ssh) \[$COL_RESET\]"
+	PROMPT_PRE="(ssh) "
 fi
