@@ -28,5 +28,5 @@ else
 fi
 
 #export PS1="\[\e[93;1;2;3m\]$PROMPT_PRE\[\e[0m\]$PS1"
-export PS1="${PROMPT_PRE}${PS1}"
+export PS1="\[$BRIGHT_YELLOW\]\[$BOLD\]\[$ITALIC\]${PROMPT_PRE}\[$COL_RESET\]${PS1}"
 
