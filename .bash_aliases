@@ -7,8 +7,8 @@ fi
 
 #PS1="\[\e[97;1m\]\u@\h"
 #PS1="\033[38;5;7;1m\u@\h"
-PS1="\[$WHITE\]\[$BOLD\]\u@\h\[$COL_RESET\]"
-PSYMB="\[$WHITE\]\[$BOLD\]\$\[$COL_RESET\]"
+PS1="\[$BOLD\]\u@\h\[$COL_RESET\]"
+PSYMB="\[$BOLD\]\$\[$COL_RESET\]"
 PDIR="\[$DIM\]\[$ITALIC\]\W\[$COL_RESET\]"
 if [ $EUID == 0 ]; then
     PS1="\[$RED\]\[$BOLD\]\u@\h\[$COL_RESET\]"
