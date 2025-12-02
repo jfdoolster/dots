@@ -1,5 +1,9 @@
 # $HOME/.bashrc_aliases
 
+if [ -f $HOME/.bash_colors ]; then
+    . $HOME/.bash_colors
+fi
+
 PS1="\[\e[97;1m\]\u@\h"
 PSYMB="\$"
 if [ $EUID == 0 ]; then

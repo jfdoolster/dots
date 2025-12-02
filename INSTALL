@@ -30,6 +30,7 @@ fi
 show_copy .bash_profile
 show_copy .bash_aliases
 show_copy .bash_logout
+show_copy .bash_colors
 show_copy .vim
 #if [ $EUID != 0 ]; then
 #    show_copy .bash_conda
