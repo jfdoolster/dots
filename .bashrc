@@ -27,5 +27,5 @@ else
   export PROMPT_COMMAND=set-window-title
 fi
 
-export PS1="\[$BRIGHT_YELLOW\]\[$BOLD\]\[$ITALIC\]${PROMPT_PRE}\[$COL_RESET\]${PS1}"
+export PS1="\[\033[93;1;2;3m\]${PROMPT_PRE}\[\033[0m\]${PS1}"
 
