@@ -19,7 +19,7 @@ if [ -d $HOME/dots/srcs ]; then
 fi
 
 set-window-title() {
-  echo -en "\033]0;$PROMPT_PRE$USER@$(uname -n): $(basename `pwd`)\a"
+  echo -en "${COL_RESET}${PROMPT_PRE}${USER}@$(uname -n): $(basename `pwd`)\a"
 }
 if [[ "$PROMPT_COMMAND" ]]; then
   export PROMPT_COMMAND="$PROMPT_COMMAND;set-window-title"
@@ -27,5 +27,6 @@ else
   export PROMPT_COMMAND=set-window-title
 fi
 
-export PS1="\[\e[93;1;2;3m\]$PROMPT_PRE\[\e[0m\]$PS1"
+#export PS1="\[\e[93;1;2;3m\]$PROMPT_PRE\[\e[0m\]$PS1"
+export PS1="${PROMPT_PRE}${PS1}"
 

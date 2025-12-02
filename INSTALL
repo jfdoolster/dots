@@ -3,6 +3,11 @@
 DOT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 OUT_DIR=$HOME
 
+#temporarily ensure scripts are available
+if [ -d $DOT_DIR/dots/srcs ]; then
+    PATH=$PATH:$DOT_DIR/dots/srcs
+fi
+
 show_copy() {
     cp -rf $DOT_DIR/$1 $OUT_DIR
     echo -ne "$DOT_DIR/$1  =>  $OUT_DIR/$1\n"
