@@ -3,31 +3,25 @@
 if [ -f $HOME/.bash_colors ]; then
     . $HOME/.bash_colors
 fi
-PS1USER="${BOLD}\u@\h${COL_RESET}"
-PS1DIR="${ITALIC}${DIM}\W${COL_RESET}"
-PS1SYM="\$"
 
+PS1="\[\e[97;1m\]\u@\h"
+PSYMB="\$"
 if [ $EUID == 0 ]; then
-    PS1USER="${RED}$PS1USER"
-    PS1DIR="${RED}$PS1DIR"
-    PS1SYM="${RED}$PS1SYM"
+    PS1="\[\e[91;1m\]\u@\h"
+    PSYMB="#"
 fi
 
-PS1="$PS1USER $PS1DIR $PS1SYM "
+if [[ -z "${USER}" ]]; then
+    USER=$USERNAME
+fi
+
+PS1="$PS1 \[\e[0;2;3m\]\W \[\e[23;1m\]$PSYMB \[\e[0m\]"
 
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 
 shopt -s checkwinsize # update col # after each command
 
-if [[ -z "${USER}" ]]; then
-    USER=$USERNAME
-fi
-
-PROMPT_PRE=""
 if [ -n "$SSH_CLIENT" ]; then
-    PROMPT_PRE="(ssh) ${COL_RESET}"
+	PROMPT_PRE="(ssh) "
 fi
-
-
-
