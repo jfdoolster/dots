@@ -13,6 +13,8 @@ if [ $EUID == 0 ]; then
     PS1SYM="${RED}$PS1SYM"
 fi
 
+PS1="$PS1USER $PS1DIR $PS1SYM "
+
 alias ls="ls --color=auto"
 alias grep="grep --color=auto"
 
@@ -22,10 +24,10 @@ if [[ -z "${USER}" ]]; then
     USER=$USERNAME
 fi
 
+PROMPT_PRE=""
 if [ -n "$SSH_CLIENT" ]; then
-    PROMPT_PRE="${BOLD}${ITALIC}${BRIGHT_YELLOW}(ssh)${COL_RESET} "
+    PROMPT_PRE="(ssh) ${COL_RESET}"
 fi
 
-PS1="${PS1USER} ${PS1DIR} ${PS1SYM} "
 
 
