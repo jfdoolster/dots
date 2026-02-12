@@ -1,0 +1,16 @@
+#!/usr/bin/bash
+
+user_prompt() {
+    read -p "$1 (y/[n]) " yn
+
+    case $yn in
+        y ) return 0;;
+        * ) return 1;;
+    esac
+}
+
+free -h && \
+user_prompt "Clear pagecache, dentries and inodes?" && \
+sudo sh -c 'echo 3 >/proc/sys/vm/drop_caches' && \
+free -h
+

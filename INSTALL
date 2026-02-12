@@ -3,6 +3,15 @@
 DOT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 OUT_DIR=$HOME
 
+user_prompt() {
+    read -p "$1 (y/[n]) " yn
+
+    case $yn in
+        y ) return 0;;
+        * ) return 1;;
+    esac
+}
+
 #temporarily ensure scripts are available
 if [ -d $DOT_DIR/dots/srcs ]; then
     PATH=$PATH:$DOT_DIR/dots/srcs
@@ -14,14 +23,8 @@ show_copy() {
 }
 
 if [[ -f $HOME/.bashrc ]]; then
-    #read -p "Overwrite ${OUT_DIR}/.bashrc? (yes/[no]) " yn
 
-    #case $yn in
-    #    yes ) show_copy .bashrc;;
-    #    * ) echo -en "${OUT_DIR}/.bashrc not modified\n";;
-    #esac
-
-    $DOT_DIR/srcs/user_prompt "Overwrite ${OUT_DIR}/.bashrc?"
+    user_prompt "Overwrite ${OUT_DIR}/.bashrc?"
     if [ $? -eq 0 ]; then
         show_copy .bashrc
     else
@@ -37,8 +40,9 @@ show_copy .bash_aliases
 show_copy .bash_logout
 show_copy .bash_colors
 show_copy .vim
-#if [ $EUID != 0 ]; then
-#    show_copy .bash_conda
-#fi
+
+if [[ ! -f $HOME/.gitconfig ]]; then
+    show_copy .gitconfig
+fi
 
 echo -ne "\nplease run 'source ~/.bashrc'\n\n"

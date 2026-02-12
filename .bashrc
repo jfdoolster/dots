@@ -10,10 +10,6 @@ if [ -f $HOME/.gcloudrc ]; then
     . $HOME/.gcloudrc
 fi
 
-#if [ -f $HOME/.bash_conda ]; then
-#    . $HOME/.bash_conda
-#fi
-
 if [ -d $HOME/dots/srcs ]; then
     PATH=$PATH:$HOME/dots/srcs
 fi
